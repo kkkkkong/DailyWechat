@@ -77,7 +77,8 @@ if __name__ == '__main__':
         data['time'] = {'value': out_time}
         data['words'] = {'value': words}
         data['weather'] = {'value': weather['text_day']}
-        data['city'] = {'value': wea_city}
+        # data['city'] = {'value': wea_city}        
+        data['city'] = {'value': words}
         data['tem_high'] = {'value': weather['high']}
         data['tem_low'] = {'value': weather['low']}
         data['born_days'] = {'value': get_count(born_date)}

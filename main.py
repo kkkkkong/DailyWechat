@@ -84,6 +84,7 @@ if __name__ == '__main__':
         data['birthday_left'] = {'value': get_birthday(birthday)}
         data['wind'] = {'value': weather['wind_direction']}
         data['name'] = {'value': name}
+        print(data)
 
         res = wm.send_template(user_id, template_id, data)
         print(res)

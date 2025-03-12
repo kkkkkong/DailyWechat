@@ -19,8 +19,9 @@ def get_time():
 
 def get_words():
     # words = requests.get("https://tenapi.cn/v2/yiyan?format=json").json()
-    words = requests.get("https://apis.tianapi.com/caihongpi/index?key=a98b3d2eda6c6e8c9dfd1f8cd4dd7295").json()
+    words = requests.get("https://apis.tianapi.com/zaoan/index?key=a98b3d2eda6c6e8c9dfd1f8cd4dd7295").json()
     # https://apis.tianapi.com/caihongpi/index?key=a98b3d2eda6c6e8c9dfd1f8cd4dd7295
+    # https://apis.tianapi.com/zaoan/index?key=a98b3d2eda6c6e8c9dfd1f8cd4dd7295
     print(words)
     if words['code'] != 200:
         return get_words()

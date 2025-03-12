@@ -124,7 +124,7 @@ if __name__ == "__main__":
     template_id = os.getenv("TEMPLATE_ID")
     weather_key = os.getenv("WEATHER_API_KEY")
     # 定义恋爱纪念日的起始日期
-    love_date = "2025-01-01"
+    love_date = "2024-09-17"
     client = WeChatClient(app_id, app_secret)
     wm = WeChatMessage(client)
 
@@ -151,8 +151,7 @@ if __name__ == "__main__":
         data['time'] = {'value': out_time}
         data['words'] = {'value': words}
         data['weather'] = {'value': weather['text_day']}
-        # data['city'] = {'value': wea_city}        
-        data['city'] = {'value': words}
+        data['city'] = {'value': wea_city}
         data['tem_high'] = {'value': weather['high']}
         data['tem_low'] = {'value': weather['low']}
         data['born_days'] = {'value': get_count(born_date)}

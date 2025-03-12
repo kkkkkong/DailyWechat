@@ -18,14 +18,15 @@ def get_time():
 
 
 def get_words():
-    # words = requests.get("https://tenapi.cn/v2/yiyan?format=json").json()
     words = requests.get("https://apis.tianapi.com/zaoan/index?key=a98b3d2eda6c6e8c9dfd1f8cd4dd7295").json()
-    # https://apis.tianapi.com/caihongpi/index?key=a98b3d2eda6c6e8c9dfd1f8cd4dd7295
-    # https://apis.tianapi.com/zaoan/index?key=a98b3d2eda6c6e8c9dfd1f8cd4dd7295
     print(words)
     if words['code'] != 200:
         return get_words()
-    return words['result']['content']
+    # 在每个标点符号后添加换行符
+    content = words['result']['content']
+    # 在句号、问号、感叹号后添加换行符
+    content = content.replace('。', '。\n').replace('？', '？\n').replace('！', '！\n')
+    return content
 
 def get_weather(city, key):
     url = f"https://api.seniverse.com/v3/weather/daily.json?key={key}&location={city}&language=zh-Hans&unit=c&start=-1&days=5"

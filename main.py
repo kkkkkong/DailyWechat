@@ -50,7 +50,8 @@ if __name__ == '__main__':
     app_secret = os.getenv("APP_SECRET")
     template_id = os.getenv("TEMPLATE_ID")
     weather_key = os.getenv("WEATHER_API_KEY")
-
+    # 定义恋爱纪念日的起始日期
+    love_date = "2025-01-01"
     client = WeChatClient(app_id, app_secret)
     wm = WeChatMessage(client)
 
@@ -85,6 +86,8 @@ if __name__ == '__main__':
         data['birthday_left'] = {'value': get_birthday(birthday)}
         data['wind'] = {'value': weather['wind_direction']}
         data['name'] = {'value': name}
+        # 计算恋爱纪念日的天数并添加到data中
+        data['love_days'] = {'value': get_count(love_date)}
         print(data)
 
         res = wm.send_template(user_id, template_id, data)

@@ -22,10 +22,10 @@ def get_words():
     print(words)
     if words['code'] != 200:
         return get_words()
-    # 在每个标点符号后添加换行符
+    # 获取原始内容
     content = words['result']['content']
-    # 在句号、问号、感叹号后添加换行符
-    content = content.replace('。', '。\n').replace('？', '？\n').replace('！', '！\n')
+    # 在逗号，句号、问号、感叹号后添加换行符（使用\n作为换行符）
+    content = content.replace('，', '，\n\n').replace('。', '。\n\n').replace('？', '？\n\n').replace('！', '！\n\n')
     return content
 
 def get_weather(city, key):

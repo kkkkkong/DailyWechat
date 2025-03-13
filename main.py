@@ -24,8 +24,8 @@ def get_words():
         return get_words()
     # 获取原始内容
     content = words['result']['content']
-    # 在逗号，句号、问号、感叹号后添加换行符（使用\n作为换行符）
-    content = content.replace('，', '，\n\n').replace('。', '。\n\n').replace('？', '？\n\n').replace('！', '！\n\n')
+    # 在句号、问号、感叹号后添加HTML换行标签
+    content = content.replace('。', '。<br>').replace('？', '？<br>').replace('！', '！<br>')
     return content
 
 def get_weather(city, key):

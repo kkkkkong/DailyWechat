@@ -24,8 +24,8 @@ def get_words():
         return get_words()
     # 获取原始内容
     content = words['result']['content']
-    # 在句号、问号、感叹号后添加HTML换行标签
-    content = content.replace('。', '。<br>').replace('？', '？<br>').replace('！', '！<br>')
+    # 使用中文空格和特殊字符组合
+    content = content.replace('。', '。 \u2005\u2005\u2005').replace('？', '？ \u2005\u2005\u2005').replace('！', '！ \u2005\u2005\u2005')
     return content
 
 def get_weather(city, key):

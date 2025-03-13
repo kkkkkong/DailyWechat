@@ -22,11 +22,17 @@ def get_words():
     print(words)
     if words['code'] != 200:
         return get_words()
-    # 获取原始内容
     content = words['result']['content']
-    # 使用中文空格和特殊字符组合
-    content = content.replace('。', '。 \u2005\u2005\u2005').replace('？', '？ \u2005\u2005\u2005').replace('！', '！ \u2005\u2005\u2005')
-    return content
+    # 按照20个字符分行
+    lines = {}
+    total_lines = (len(content) + 19) // 20  # 向上取整，确保所有文字都能显示
+    print(f"文本总共需要 {total_lines} 行来显示")
+    print(f"原始文本长度: {len(content)} 字符")
+    
+    for i in range(0, len(content), 20): 
+        line_num = i // 20 + 1
+        lines[f'words_line{line_num}'] = {'value': content[i:i+20]}
+    return lines
 
 def get_weather(city, key):
     url = f"https://api.seniverse.com/v3/weather/daily.json?key={key}&location={city}&language=zh-Hans&unit=c&start=-1&days=5"
@@ -151,7 +157,7 @@ if __name__ == "__main__":
         wea_city,weather = get_weather(city,weather_key)
         data = dict()
         data['time'] = {'value': out_time}
-        data['words'] = {'value': words}
+        data.update(words)  # 直接添加分行的文本数据
         data['weather'] = {'value': weather['text_day']}
         data['city'] = {'value': wea_city}
         data['tem_high'] = {'value': weather['high']}
